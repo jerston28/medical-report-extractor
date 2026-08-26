@@ -57,3 +57,23 @@ def get_section(sections: dict, candidate_keys: list) -> str:
         if key in sections:
             return sections[key]
     return ""
+
+
+def get_section_by_keywords(sections: dict, keywords: list) -> str:
+    """
+    Fallback lookup for when no exact candidate heading matched: return
+    the text of the first section (in document order) whose normalized
+    key *contains* one of these keywords as a substring.
+
+    Useful for concepts where real-world headings share a root word even
+    though the exact phrasing varies too much to enumerate (e.g. any of
+    "Procedures", "Procedure Notes", "Major Surgical or Invasive
+    Procedure" all contain "procedure"). Not appropriate for concepts
+    like "diagnosis", where real alternate headings (e.g. "Reason for
+    Admission", "Chief Complaint") share no common substring at all -
+    those still need explicit exact-match synonyms.
+    """
+    for key, text in sections.items():
+        if any(kw in key for kw in keywords):
+            return text
+    return ""
