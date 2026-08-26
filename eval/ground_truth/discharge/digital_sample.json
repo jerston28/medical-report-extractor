@@ -1,6 +1,7 @@
 {
   "doc_type": "discharge",
-  "verified": false,
+  "verified": true,
+  "_note": "Hand-checked every field against extract_text_from_pdf() output for data/samples/discharge/digital_sample.pdf - diagnosis, procedures, and follow_up all match the source verbatim, and canonical_diagnosis is the correct HTN/T2DM abbreviation expansion. No corrections needed.",
   "fields": {
     "diagnosis": "HTN, T2DM",
     "procedures": "Echocardiogram performed on 2026-08-22",

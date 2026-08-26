@@ -1,6 +1,7 @@
 {
   "doc_type": "lab",
-  "verified": false,
+  "verified": true,
+  "_note": "Hand-corrected against the source PDF: the pipeline's OCR misread the WBC reference range as '4900-11000' (5 misread as 9); the actual printed value is '4500-11000'.",
   "fields": [
     {
       "test_name": "Hemoglobin",
@@ -14,7 +15,7 @@
       "test_name": "WBC Count",
       "value": 7200.0,
       "unit": "/uL",
-      "reference_range": "4900-11000 /uL",
+      "reference_range": "4500-11000 /uL",
       "flag": "Normal",
       "canonical_test_name": "White Blood Cell Count"
     },
