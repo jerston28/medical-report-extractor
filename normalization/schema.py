@@ -8,7 +8,7 @@ extractor produced it or how messy the source text was - comes out with
 the same fields in the same shape.
 """
 
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Optional
 
 
@@ -37,3 +37,4 @@ class DischargeInfo:
     procedures: Optional[str]
     follow_up: Optional[str]
     canonical_diagnosis: Optional[str]
+    diagnosis_entities: list = field(default_factory=list)

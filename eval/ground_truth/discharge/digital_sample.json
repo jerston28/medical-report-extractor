@@ -1,11 +1,12 @@
 {
   "doc_type": "discharge",
   "verified": true,
-  "_note": "Hand-checked every field against extract_text_from_pdf() output for data/samples/discharge/digital_sample.pdf - diagnosis, procedures, and follow_up all match the source verbatim, and canonical_diagnosis is the correct HTN/T2DM abbreviation expansion. No corrections needed.",
+  "_note": "Hand-checked every field against extract_text_from_pdf() output for data/samples/discharge/digital_sample.pdf - diagnosis, procedures, and follow_up all match the source verbatim, and canonical_diagnosis is the correct HTN/T2DM abbreviation expansion. diagnosis_entities added after normalization/schema.py started carrying that field through (previously dropped, causing an AttributeError in the app) - value matches what extraction/discharge_extractor.py's NER pass actually returns for this diagnosis text.",
   "fields": {
     "diagnosis": "HTN, T2DM",
     "procedures": "Echocardiogram performed on 2026-08-22",
     "follow_up": "Follow-up with primary care physician in 2 weeks.\nContinue current medications and monitor blood pressure daily.",
-    "canonical_diagnosis": "Hypertension, Type 2 Diabetes Mellitus"
+    "canonical_diagnosis": "Hypertension, Type 2 Diabetes Mellitus",
+    "diagnosis_entities": ["HTN", "T2DM"]
   }
 }

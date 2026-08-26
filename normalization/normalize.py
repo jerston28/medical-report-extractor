@@ -49,6 +49,7 @@ def normalize_discharge_info(raw: dict) -> DischargeInfo:
         procedures=raw.get("procedures"),
         follow_up=raw.get("follow_up"),
         canonical_diagnosis=normalize_diagnosis(diagnosis) if diagnosis else diagnosis,
+        diagnosis_entities=raw.get("diagnosis_entities") or [],
     )
 
 

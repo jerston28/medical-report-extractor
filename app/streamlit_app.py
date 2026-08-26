@@ -67,18 +67,31 @@ def get_flagged_items(doc_type: str, normalized):
     summaries don't have a normal/abnormal concept in the structured
     data, so surface the clinically-relevant fields instead rather than
     fabricating a flag that isn't there.
+
+    Defensive by design: extraction can legitimately come back empty or
+    partial (an unfamiliar section heading, a garbled OCR page, a
+    format the extractor wasn't built for), so this never assumes a
+    field is populated or even present - it always degrades to an
+    empty list/None rather than raising, for all three doc types.
     """
     if doc_type == "lab":
+        if not normalized:
+            return []
         return [
             dataclasses.asdict(row) for row in normalized
-            if row.flag and row.flag.strip().lower() not in ("normal", "")
+            if getattr(row, "flag", None) and row.flag.strip().lower() not in ("normal", "")
         ]
     if doc_type == "discharge":
-        entities = normalized.diagnosis_entities or []
-        if normalized.canonical_diagnosis:
-            return [{"diagnosis": normalized.canonical_diagnosis, "entities": entities}]
+        if not normalized:
+            return []
+        entities = getattr(normalized, "diagnosis_entities", None) or []
+        canonical_diagnosis = getattr(normalized, "canonical_diagnosis", None)
+        if canonical_diagnosis:
+            return [{"diagnosis": canonical_diagnosis, "entities": entities}]
         return []
-    return None  # prescriptions have no structured flag concept
+    if doc_type == "prescription":
+        return None  # prescriptions have no structured flag concept
+    return None
 
 
 @st.cache_data(show_spinner=False)
