@@ -1,0 +1,10 @@
+{
+  "doc_type": "discharge",
+  "verified": false,
+  "fields": {
+    "diagnosis": "Acute Bronchitis, Seasonal Allergic Rhinitis",
+    "procedures": "Chest X-ray performed, no significant findings.",
+    "follow_up": "Rest for one week and stay well hydrated.\nReturn to clinic if symptoms worsen or fever develops.",
+    "canonical_diagnosis": "Acute Bronchitis, Seasonal Allergic Rhinitis"
+  }
+}

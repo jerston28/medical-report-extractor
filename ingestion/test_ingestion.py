@@ -29,6 +29,9 @@ SAMPLES_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 def find_sample_pdf() -> str:
     matches = glob.glob(os.path.join(SAMPLES_DIR, "**", "*.pdf"), recursive=True)
+    # edge_cases/ holds deliberately broken files for eval/test_full_pipeline.py's
+    # error-handling check - this script demos the happy path, so skip them.
+    matches = [p for p in matches if "edge_cases" not in os.path.relpath(p, SAMPLES_DIR).split(os.sep)]
     if matches:
         return matches[0]
     return generate_synthetic_scanned_pdf()

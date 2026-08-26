@@ -98,8 +98,19 @@ def run_pipeline(file_bytes: bytes, extension: str):
                     tmp_path = tmp.name
                 raw_text = get_raw_text_from_pdf(tmp_path)
             finally:
+                # Best-effort cleanup only: on Windows, a corrupted/invalid
+                # PDF can leave MuPDF holding a file lock even after
+                # fitz.open() raises, which makes os.remove() itself raise
+                # WinError 32. If that's allowed to propagate here, it
+                # replaces (masks) the real, useful error from above with a
+                # confusing "file in use" message. A leftover temp file is
+                # harmless (OS temp dirs get cleaned periodically); silently
+                # masking the actual failure reason is not.
                 if tmp_path and os.path.exists(tmp_path):
-                    os.remove(tmp_path)
+                    try:
+                        os.remove(tmp_path)
+                    except OSError:
+                        pass
         else:
             raw_text = get_raw_text_from_image(file_bytes)
     except Exception as e:

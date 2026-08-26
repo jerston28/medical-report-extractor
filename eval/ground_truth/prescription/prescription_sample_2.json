@@ -1,0 +1,27 @@
+{
+  "doc_type": "prescription",
+  "verified": false,
+  "fields": [
+    {
+      "drug_name": "Lipitor",
+      "canonical_drug_name": "Atorvastatin",
+      "dosage": "20mg",
+      "frequency": "every evening",
+      "duration": "for 30 days"
+    },
+    {
+      "drug_name": "Metformin",
+      "canonical_drug_name": "Metformin",
+      "dosage": "850mg",
+      "frequency": "twice daily",
+      "duration": null
+    },
+    {
+      "drug_name": "Advil",
+      "canonical_drug_name": "Ibuprofen",
+      "dosage": "200mg",
+      "frequency": "as needed",
+      "duration": null
+    }
+  ]
+}

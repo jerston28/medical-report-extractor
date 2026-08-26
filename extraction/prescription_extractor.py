@@ -18,7 +18,8 @@ DOSAGE_RE = re.compile(r"\d+\.?\d*\s*(?:mg|mcg|g|ml|iu|units?)", re.IGNORECASE)
 
 FREQUENCY_RE = re.compile(
     r"\d+x\s*daily|once daily|twice daily|three times daily|four times daily|"
-    r"every\s+\d+\s*hours?|as needed|\bbid\b|\btid\b|\bqid\b",
+    r"every\s+\d+\s*hours?|every\s+(?:morning|evening|night|day)|"
+    r"as needed|\bbid\b|\btid\b|\bqid\b",
     re.IGNORECASE,
 )
 

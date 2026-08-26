@@ -1,0 +1,10 @@
+{
+  "doc_type": "discharge",
+  "verified": false,
+  "fields": {
+    "diagnosis": "Community-Acquired Pneumonia",
+    "procedures": "Sputum culture and chest X-ray performed.",
+    "follow_up": "Complete the full course of antibiotics.\nReturn for a follow-up chest X-ray in 4 weeks.",
+    "canonical_diagnosis": "Community-Acquired Pneumonia"
+  }
+}

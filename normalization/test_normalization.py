@@ -78,7 +78,10 @@ def print_before_after(doc_type: str, raw, normalized):
 
 
 def main():
-    pdf_paths = sorted(glob.glob(os.path.join(SAMPLES_DIR, "**", "*.pdf"), recursive=True))
+    pdf_paths = glob.glob(os.path.join(SAMPLES_DIR, "**", "*.pdf"), recursive=True)
+    # edge_cases/ holds deliberately broken files for eval/test_full_pipeline.py's
+    # error-handling check - this script demos the happy path, so skip them.
+    pdf_paths = sorted(p for p in pdf_paths if "edge_cases" not in os.path.relpath(p, SAMPLES_DIR).split(os.sep))
     if not pdf_paths:
         print("No sample PDFs found in data/samples/. Run ingestion/test_ingestion.py first.")
         return
