@@ -1,0 +1,10 @@
+{
+  "doc_type": "discharge",
+  "verified": false,
+  "fields": {
+    "diagnosis": "HTN, T2DM",
+    "procedures": "Echocardiogram performed on 2026-08-22",
+    "follow_up": "Follow-up with primary care physician in 2 weeks.\nContinue current medications and monitor blood pressure daily.",
+    "canonical_diagnosis": "Hypertension, Type 2 Diabetes Mellitus"
+  }
+}

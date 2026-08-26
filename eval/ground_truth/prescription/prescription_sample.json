@@ -1,0 +1,21 @@
+{
+  "doc_type": "prescription",
+  "verified": true,
+  "_note": "The source PDF does not actually specify a duration for Acetaminophen (pipeline correctly extracts null). The 'for 5 days' value below is an intentionally-injected demo discrepancy, so eval/metrics.py has a real mismatch to detect instead of trivially scoring 1.0 on every field. Replace with a genuine hand-verified correction when using this for real evaluation.",
+  "fields": [
+    {
+      "drug_name": "Amoxicillin",
+      "canonical_drug_name": "Amoxicillin",
+      "dosage": "500mg",
+      "frequency": "3x daily",
+      "duration": "for 7 days"
+    },
+    {
+      "drug_name": "Paracetamol",
+      "canonical_drug_name": "Acetaminophen",
+      "dosage": "650mg",
+      "frequency": "as needed",
+      "duration": "for 5 days"
+    }
+  ]
+}
